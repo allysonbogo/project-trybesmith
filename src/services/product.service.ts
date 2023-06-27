@@ -9,6 +9,14 @@ async function create(product: Product): Promise<ServiceResponse<Product>> {
   return serviceResponse;
 }
 
+async function findAll(): Promise<ServiceResponse<Product[]>> {
+  const products = await ProductModel.findAll();
+  const serviceResponse: ServiceResponse<Product[]> = {
+    status: 'SUCCESSFUL', data: products.map((p) => p.dataValues) };
+  return serviceResponse;
+}
+
 export default {
   create,
+  findAll,
 };

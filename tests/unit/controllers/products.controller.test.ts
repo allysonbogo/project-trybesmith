@@ -20,17 +20,34 @@ describe('ProductsController', function () {
     sinon.restore();
   });
 
-  it('ao receber informações válidas, retorne os dados do produto', async function () {
-    req.body = productMock.validProductBody;
-    const serviceResponse: ServiceResponse<Product> = {
-      status: 'SUCCESSFUL',
-      data: productMock.validResponse,
-    }
-    sinon.stub(productService, 'create').resolves(serviceResponse);
+  describe('POST /products', function () {
+    it('ao receber informações válidas, retorna os dados do produto', async function () {
+      req.body = productMock.validProductBody;
+      const serviceResponse: ServiceResponse<Product> = {
+        status: 'SUCCESSFUL',
+        data: productMock.validResponse,
+      }
+      sinon.stub(productService, 'create').resolves(serviceResponse);
 
-    await productController.create(req, res);
-    
-    expect(res.status).to.have.been.calledWith(201);
-    expect(res.json).to.have.been.calledWith(productMock.validResponse);
+      await productController.create(req, res);
+      
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(productMock.validResponse);
+    });
   });
+
+  describe('GET /products', function () {
+    it('retorna uma lista de produtos', async function () {
+      const serviceResponse: ServiceResponse<Product[]> = {
+        status: 'SUCCESSFUL',
+        data: [productMock.validResponse],
+      }
+      sinon.stub(productService, 'findAll').resolves(serviceResponse);
+
+      await productController.findAll(req, res);
+      
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith([productMock.validResponse]);
+    });
+  })
 });

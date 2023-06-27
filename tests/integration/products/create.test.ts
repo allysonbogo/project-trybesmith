@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('POST /products', function () { 
   beforeEach(function () { sinon.restore(); });
 
-  it('ao receber informações válidas, retorne os dados do produo', async function () {
+  it('ao receber informações válidas, retorna os dados do produto', async function () {
     const httpRequestBody = productMock.validProductBody
     const mockCreateReturn = ProductModel.build(productMock.validResponse);
     sinon.stub(ProductModel, 'create').resolves(mockCreateReturn);

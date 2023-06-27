@@ -13,6 +13,12 @@ async function create(req: Request, res: Response): Promise<Response> {
   return res.status(201).json(serviceResponse.data);
 }
 
+async function findAll(req: Request, res: Response): Promise<Response> {
+  const serviceResponse = await productService.findAll();
+  return res.status(200).json(serviceResponse.data);
+}
+
 export default {
   create,
+  findAll,
 };
