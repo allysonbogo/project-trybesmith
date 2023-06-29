@@ -9,19 +9,19 @@ function validateParams(param: object): ValidationResponse | void {
   if (!Object.values(param)[0]) {
     return {
       statusCode: 400,
-      message: `"${Object.keys(param)}" is required`,
+      message: `"${Object.keys(param)[0]}" is required`,
     };
   }
   if (Object.values(param)[0].length < 3) {
     return {
       statusCode: 422,
-      message: `"${Object.keys(param)}" length must be at least 3 characters long`,
+      message: `"${Object.keys(param)[0]}" length must be at least 3 characters long`,
     };
   }
   if (typeof Object.values(param)[0] !== 'string') {
     return {
       statusCode: 422,
-      message: `"${Object.keys(param)}" must be a string`,
+      message: `"${Object.keys(param)[0]}" must be a string`,
     };
   }
 }

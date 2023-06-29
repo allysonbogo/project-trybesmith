@@ -17,6 +17,6 @@ describe('GET /orders', function () {
     const httpResponse = await chai.request(app).get('/orders');
 
     expect(httpResponse.status).to.equal(200);
-    expect(httpResponse.body).to.be.deep.equal([orderMock.validResponse]);
+    expect(httpResponse.body).to.be.deep.equal([{ id: 1, userId: 1 }]);
   });
 });

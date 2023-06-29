@@ -24,6 +24,20 @@ async function findAll(): Promise<ServiceResponse<OrderSequelizeModel[]>> {
   return serviceResponse;
 }
 
+async function create(userId: number, productIds: number[])
+  : Promise<ServiceResponse<OrderSequelizeModel | unknown>> {
+  const newOrder = await OrderModel.create({ userId });
+  const orderId = newOrder.dataValues.id;
+  await Promise.all(productIds.map((id) =>
+    ProductModel.update({ orderId }, { where: { id } })));
+
+  const serviceResponse: ServiceResponse<OrderSequelizeModel | unknown> = {
+    status: 'SUCCESSFUL', data: { userId, productIds } };
+  
+  return serviceResponse;
+}
+
 export default {
   findAll,
+  create,
 };

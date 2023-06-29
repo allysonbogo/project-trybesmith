@@ -7,7 +7,6 @@ import { OrderSequelizeModel } from '../../../src/database/models/order.model';
 import orderMock from '../../mocks/order.mock';
 import orderService from '../../../src/services/order.service';
 import orderController from '../../../src/controllers/order.controller';
-import { Order } from '../../../src/types/Order';
 
 chai.use(sinonChai);
 
@@ -35,4 +34,20 @@ describe('OrdersController', function () {
       expect(res.json).to.have.been.calledWith([orderMock.validResponse]);
     });
   })
+
+  describe('POST /orders', function () {
+    it('ao receber informações válidas, retorna os dados do pedido', async function () {
+      req.body = orderMock.validOrderBody;
+      const serviceResponse: ServiceResponse<{ userId: number, productIds:number[] }> = {
+        status: 'SUCCESSFUL',
+        data: orderMock.validCreateOrderResponse,
+      }
+      sinon.stub(orderService, 'create').resolves(serviceResponse);
+
+      await orderController.create(req, res);
+      
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(orderMock.validCreateOrderResponse);
+    });
+  });
 });
