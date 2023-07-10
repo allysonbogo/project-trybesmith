@@ -3,7 +3,7 @@
 
 ## :page_with_curl: Sobre
 
-Este projeto consolida o aprendizado da ferramenta TypeScript por meio da construção de uma API Node Express utilizando variáveis e funções com tipagens TypeScript. O projeto foi desenvolvido utilizando as ferramentas TypeScript, Node, Sequelize e JWT (JSON Web Token) para a criação de uma loja de itens medievais, no formato de uma API RESTful com CRUD completo e banco de dados.
+Este projeto consolida o aprendizado da ferramenta TypeScript por meio da construção de uma API Node Express utilizando variáveis e funções com tipagens TypeScript. O projeto foi desenvolvido utilizando as ferramentas TypeScript, Node, Sequelize e JWT (JSON Web Token) para a criação de uma loja de itens medievais, no formato de uma API RESTful com banco de dados.
 
 Algumas camadas do modelo MSC (Model, Service e Controller) foram desenvolvidas utilizando o JWT para autenticação de rotas. Além disso, foram desenvolvidos testes para garantir o correto funcionamento da aplicação.
 
