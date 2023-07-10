@@ -132,6 +132,7 @@ npm run test:mocha
     - É disparado o erro <code>401</code> <code>{ "message": "Token not found" }</code>, ao fazer uma operação sem um token; <br>
     - É disparado o erro <code>401</code> <code>{ "message": "Invalid token" }</code>, ao fazer uma operação com um token expirado ou inválido; <br>
   </details>
+  <br>
 </details>
 
 
